@@ -9,7 +9,7 @@ public class DungeonCrawler : MonoBehaviour
     {
         Position = startPos;
     }
-    public Vector2Int Move(Dictionary<Direction,Vector2Int> directrionMovementMap)
+    public Vector2Int Move(Dictionary<Direction,Vector2Int> directrionMovementMap) //상하좌우로 한칸씩 이동후 현재 좌표 리턴
     {
         Direction toMove = (Direction)Random.Range(0, directrionMovementMap.Count);
         Position += directrionMovementMap[toMove];
