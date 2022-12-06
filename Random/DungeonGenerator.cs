@@ -13,30 +13,30 @@ public class DungeonGenerator : MonoBehaviour
     }
     private void Start()
     {
-        //�ε� ���۽���
+        //·Îµù ½ÃÀÛ½ÃÁ¡
         
-        dungeonRooms = DungeonCrawlerController.GenerateDungeon(dungeonGenarationData);
+        dungeonRooms = DungeonCrawlerController.GenerateDungeon(dungeonGenarationData); //방의 좌표들을 저장
         
         SpawnRooms(dungeonRooms,dungeonRooms.Count);
     }
-    private void SpawnRooms(IEnumerable<Vector2Int> rooms,int count)
+    private void SpawnRooms(IEnumerable<Vector2Int> rooms,int count) //방 생성
     {
 
         RoomController.instance.LoadRoom("Start", 0, 0);
         List<int> roomList = new List<int>();
-        for(int i=2;i<=RoomController.instance.GetNumMap();)
+        for(int i=2;i<=RoomController.instance.GetNumMap();)//2~전체 방번호 까지 추가후 셔플
         {
             roomList.Add(i++);
         }
         ShuffleList(roomList);
 
-        roomList.Add(1);
+        roomList.Add(1);            //보스방으로 가는 텔레포트방 번호가 1번
         foreach (int item in roomList)
         {
             Debug.Log(item.ToString());
         }
         int index = 0;
-        foreach (Vector2Int roomLocation in rooms)
+        foreach (Vector2Int roomLocation in rooms) //방좌표마다 방생성
         {
             if (index+1 > roomList.Count)
                 break;
