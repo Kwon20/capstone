@@ -31,7 +31,7 @@ public class RoomController : MonoBehaviour
     bool isLoadEnd;
     int count;
     // Start is called before the first frame update
-    public bool DoesRoomExist(int x, int y)
+    public bool DoesRoomExist(int x, int y)//좌표에 이미 방이 존재하는 지 확인하는 
     {
         return loadedRooms.Find(item => item.X == x && item.Y == y) != null;
     }
@@ -82,7 +82,7 @@ public class RoomController : MonoBehaviour
             RoomController.instance.OffOtherRoom();
 
     }
-    void UpdateRoomQueue()
+    void UpdateRoomQueue()//큐에 들어있는 방들을 모두 
     {
         if (isLoadingRoom)
         {
@@ -105,7 +105,7 @@ public class RoomController : MonoBehaviour
             isLoadEnd = true;
         }
     }
-    public void LoadRoom(string name, int x, int y)
+    public void LoadRoom(string name, int x, int y)//정보에 따라 큐에 방을 추가
     {
         if (DoesRoomExist(x, y))
         {
@@ -117,7 +117,7 @@ public class RoomController : MonoBehaviour
         newRoomData.Y = y;
         loadRoomQueue.Enqueue(newRoomData);
     }
-    IEnumerator LoadRoomRoutine(RoomInfo info)
+    IEnumerator LoadRoomRoutine(RoomInfo info)//방의 이름으로 씬불러오기
     {
         string roomName = currentWorldName + info.name;
 
@@ -129,7 +129,7 @@ public class RoomController : MonoBehaviour
         }
         
     }
-    public void RegisterRoom(Room room)
+    public void RegisterRoom(Room room)//방의 좌표에 따라 방을 이동
     {
         room.transform.position = new Vector3(currentLoadRoomData.X * room.Width, currentLoadRoomData.Y * room.Height, 0);
 
@@ -152,7 +152,7 @@ public class RoomController : MonoBehaviour
     public int GetNumMap()
     { return numMap; }
 
-    public void UpdateDoor()
+    public void UpdateDoor()//문 방향에 다른 방이 없다면 문을 파괴
     {
         if (isLoadingRoom)
         {
@@ -191,7 +191,7 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    public void OffOtherRoom()
+    public void OffOtherRoom()//현재방을 제외한 나머지 방을 끄는 함수
     {
 
         foreach (Room item in loadedRooms)
