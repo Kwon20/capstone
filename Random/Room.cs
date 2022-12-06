@@ -30,7 +30,7 @@ public class Room : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, new Vector3(Width, Height, 0));
     }
-   
+   //각 방향에 있는 방을 리턴
     public Room GetLeft()
     {
         return RoomController.instance.loadedRooms.Find(item=>item.X==X - 1&&item.Y== Y);
@@ -47,7 +47,7 @@ public class Room : MonoBehaviour
     {
         return RoomController.instance.loadedRooms.Find(item => item.X == X  && item.Y == Y-1);
     }
-    public void OpenDoor()
+    public void OpenDoor()	//문을 여는 함수
 	{
        if(this.transform.Find("LeftDoor")!=null)
 		{
@@ -70,7 +70,7 @@ public class Room : MonoBehaviour
             this.transform.Find("BottomDoor").GetComponentInChildren<Door>().Play();
         }
     }
-    public void CloseDoor()
+    public void CloseDoor()	//문을 닫는 
 	{
         if (this.transform.Find("MonsterList") == null)
             return;
