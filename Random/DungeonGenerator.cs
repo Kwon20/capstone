@@ -36,7 +36,7 @@ public class DungeonGenerator : MonoBehaviour
             Debug.Log(item.ToString());
         }
         int index = 0;
-        foreach (Vector2Int roomLocation in rooms) //방좌표마다 방생성
+        foreach (Vector2Int roomLocation in rooms) //큐에 방이름/방좌표를 저장
         {
             if (index+1 > roomList.Count)
                 break;
