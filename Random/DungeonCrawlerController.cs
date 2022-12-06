@@ -19,7 +19,7 @@ public class DungeonCrawlerController : MonoBehaviour
         {Direction.down,Vector2Int.down },
         {Direction.right,Vector2Int.right }
     };
-    public static List<Vector2Int> GenerateDungeon(DungeonGenarationData dungeonData)
+    public static List<Vector2Int> GenerateDungeon(DungeonGenarationData dungeonData)//방들의 좌표 생성 및 저장
     {
         positionVisited.Clear();
         List<DungeonCrawler> dungeonCrawlers = new List<DungeonCrawler>();
