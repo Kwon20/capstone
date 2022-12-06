@@ -32,7 +32,7 @@ public class Door : MonoBehaviour
             animator.gameObject.SetActive(false);
         }
     }
-    public void Play()
+    public void Play() // 문 애니메이션
     {
         Debug.Log(gameObject.name + "Door Open");
         animator.gameObject.SetActive(true);
@@ -42,7 +42,7 @@ public class Door : MonoBehaviour
         animator.GetComponent<Animator>().SetBool("IsPlay", true);
     }
     [System.Obsolete]
-    public void GoToNextRoom()
+    public void GoToNextRoom() //다음방으로 이동하는 함수
     {
 
         parents = this.transform.parent.gameObject;
@@ -69,7 +69,7 @@ public class Door : MonoBehaviour
         GameManager.instance.MoveRoom();
         SceneCtrl.instance.FindMonsterList();
     }
-    void SettingDoor(string doorName, DoorType type)
+    void SettingDoor(string doorName, DoorType type) //방 이동 후 카메라,플레이어,방 세팅
     {
         
         RoomController.instance.currentRoom = CameraController.instance.currRoom;
